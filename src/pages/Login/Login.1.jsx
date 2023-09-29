@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
-import "./Login.scss";
-
+import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "../../redux/actions/user";
 
-const Login = () => {
+export const Login = () => {
   const [toggle1, settToggle1] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, error, loading } = useSelector((state) => state.user);
 
   const {
     register,
@@ -23,14 +19,12 @@ const Login = () => {
   } = useForm({ mode: "onTouched" });
 
   const onSubmit = (data) => {
+    console.log(data);
     dispatch(getUser(data));
+    // reset();
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [navigate, user]);
+  ("İstifadəçi adı və ya şifrə yanlışdır");
 
   return (
     <div className="registerContainer" style={{ height: "100vh" }}>
@@ -72,18 +66,12 @@ const Login = () => {
           {errors.password && (
             <span className="registerErrMsg">{errors.password.message}</span>
           )}
-          {error && <span className="registerErrMsg">{error}</span>}
           <span onClick={() => settToggle1(!toggle1)} className="registerEyes">
             {toggle1 ? <FaEyeSlash /> : <AiFillEye />}
           </span>
         </div>
 
-        <input
-          type="submit"
-          className="registerSbmtBtn"
-          value="LOG IN"
-          disabled={loading}
-        />
+        <input type="submit" className="registerSbmtBtn" value="LOG IN" />
 
         <Link
           style={{ textAlign: "center", padding: "10px 0px" }}
@@ -99,5 +87,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;

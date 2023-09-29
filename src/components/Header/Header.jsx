@@ -3,6 +3,7 @@ import style from "./Header.module.scss";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosAddCircle } from "react-icons/io";
 import SearchInput from "../SearchInput/SearchInput";
+import { logout } from "../../helper";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Header = () => {
       <div className={style.headerIcons}>
         <IoIosAddCircle />
       </div>
+      <button onClick={logout}>logout</button>
     </div>
   );
 };
