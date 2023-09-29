@@ -1,0 +1,26 @@
+@import '../../assets/style/variable.scss';
+
+.headerContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 20px 0px;
+    margin-bottom: 50px;
+
+    .headerIcons {
+        color: $mainColor;
+        font-size: 20px;
+        padding-top: 4px;
+    }
+
+    .headerIcons:hover {
+        color: $inputHover;
+    }
+
+    .headerLogo {
+        font-size: 20px;
+    }
+}

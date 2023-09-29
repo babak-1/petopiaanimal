@@ -1,0 +1,187 @@
+@import "../../assets/style/variable.scss";
+
+.registerContainer {
+    background-color: $mainGray;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    // height: 100vh;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffff;
+        padding: 40px;
+        border-radius: 6px;
+        width: 90%;
+        margin: auto;
+
+        .registerToLogin {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .registerHeading {
+            text-align: center;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .registerLabelInputGroups {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+
+            .registerEyes {
+                position: absolute;
+                right: 10px;
+                top: 13px;
+            }
+
+            .registerErrMsg {
+                font-size: 10px;
+                padding-top: 5px;
+                color: $alertColor;
+            }
+
+            .registerLabels {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+                font-size: 10px;
+                font-weight: lighter;
+                opacity: 0.4;
+
+            }
+
+            .registerInputs {
+                padding: 20px 10px 5px 10px;
+                border: 1px solid $mainGray;
+                outline: none;
+                border-radius: 8px;
+                transition: border 0.3s ease;
+                font-size: 12px;
+            }
+
+            .registerInputs:hover,
+            .registerInputs:focus {
+                border-color: $inputHover;
+            }
+
+
+            .registerInputs::placeholder {
+                font-size: 10px;
+                padding: 10px;
+            }
+
+
+
+
+        }
+
+        .registerSbmtBtn {
+            border: none;
+            padding: 15px 10px;
+            border-radius: 20px;
+            color: #ffff;
+            background-color: $mainColor;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .registerSbmtBtn:hover {
+            background-color: $btnHoverColor;
+        }
+
+
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .registerContainer {
+        form {
+            width: 70%;
+            padding: 40px 60px;
+
+
+            .registerLabelInputGroups {
+
+                .registerInputs {
+                    font-size: 15px;
+                }
+
+                .registerLabels {
+                    font-size: 12px;
+
+                }
+
+            }
+
+            .registerSbmtBtn {
+                margin: auto;
+                width: 70%;
+            }
+
+
+        }
+    }
+}
+
+
+@media screen and (min-width: $laptop) {
+    .registerContainer {
+        form {
+            width: 60%;
+            padding: 40px 80px;
+
+
+            .registerLabelInputGroups {
+
+                .registerInputs {
+                    font-size: 15px;
+                }
+
+                .registerLabels {
+                    font-size: 12px;
+
+                }
+            }
+
+
+        }
+    }
+}
+
+@media screen and (min-width: $desktop) {
+    .registerContainer {
+        form {
+            width: 50%;
+            max-width: 600px;
+            padding: 40px 100px;
+
+
+            .registerSbmtBtn {
+                width: 80%;
+                margin: auto;
+            }
+
+
+
+
+            .registerLabelInputGroups {
+
+                .registerInputs {
+                    font-size: 18px;
+                }
+
+                .registerLabels {
+                    font-size: 15px;
+
+                }
+            }
+
+
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "../../assets//style/variable.scss";
+
+.searchesContainer {
+    position: absolute;
+    top: 60px;
+    display: flex;
+    gap: 5px;
+    width: 100%;
+
+    .citySearchCont,
+    .categorySearchCont {
+        position: relative;
+        width: 100%;
+
+        input {
+            background-color: $searchInpColor;
+            outline: none;
+            border: none;
+            padding: 8px 5px;
+            border-radius: 6px;
+            width: 100%;
+
+        }
+
+        .cityInput {}
+
+        .searchIcons {
+            position: absolute;
+            right: 5px;
+            top: 7px;
+            opacity: 0.5;
+            font-size: 15px;
+
+        }
+    }
+
+    .citySearchCont,
+    .categorySearchCont:focus {}
+
+
+
+
+}
