@@ -1,0 +1,61 @@
+@import "../../assets//style/variable.scss";
+
+.container {
+    position: absolute;
+    bottom: -130px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    left: -20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width: 100vw;
+    align-items: center;
+
+    .categoryList:hover {
+
+        .cardImageCont {
+            background-color: $hoverSearchInpColor;
+        }
+    }
+
+    .categoryList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        .announceCount {
+            position: absolute;
+            font-size: 12px;
+            bottom: 22px;
+            color: rgb(209, 112, 112);
+        }
+
+        .cardImageCont {
+            background-color: $searchInpColor;
+            padding: 10px;
+            font-size: 40px;
+            border-radius: 10px;
+
+            .cardImage {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .categoryName {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 80px;
+            font-size: 15px;
+            text-align: center;
+        }
+    }
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}

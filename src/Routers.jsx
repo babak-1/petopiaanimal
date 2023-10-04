@@ -8,6 +8,7 @@ import ResetPwd from "./pages/ResetPwd/ResetPwd";
 import AuthRoutes from "./routes/AuthRoutes";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import NotFound from "./pages/NotFound/404";
+import CreateAnnounce from "./pages/CreateAnnounce/CreateAnnounce";
 
 const Routers = () => {
   return (
@@ -20,8 +21,10 @@ const Routers = () => {
       </Route>
 
       <Route element={<ProtectedRoutes />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/create-announcement" element={<CreateAnnounce />} />
       </Route>
+
+      <Route path="/" element={<Home />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

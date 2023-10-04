@@ -1,0 +1,67 @@
+@import "../../assets//style/variable.scss";
+
+.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $searchInpColor;
+    z-index: 2;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    ul {
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            .icons {
+                padding-top: 5px;
+                color: $hoverSearchInpColor;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid $hoverSearchInpColor;
+        background-color: #fff;
+
+
+        h1 {
+            font-size: 25px;
+        }
+
+        .closeIcon {
+            font-size: 20px;
+        }
+
+    }
+
+
+}
+
+.closeSidebar {
+    transform: translate(-100%);
+    transition: all 0.5s;
+}
+
+.openSidebar {
+    transform: translate(0%);
+    transition: all 0.5s;
+
+}
