@@ -1,0 +1,17 @@
+@import "../../assets//style/variable.scss";
+
+.container {
+    padding: 20px;
+
+    .headding {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    .cardContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+}

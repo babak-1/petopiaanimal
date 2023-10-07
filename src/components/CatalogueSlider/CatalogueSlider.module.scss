@@ -6,10 +6,9 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
-    left: -20px;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    width: 100vw;
+    width: 90%;
     align-items: center;
 
     .categoryList:hover {

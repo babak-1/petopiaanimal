@@ -1,5 +1,7 @@
 import React from "react";
 import useFetch from "../../hooks/useFetch";
+import style from "./Home.module.scss";
+import AnnounceCard from "../../components/AnnounceCard/AnnounceCard";
 
 const Home = () => {
   const user = useFetch(`api/users/profile`);
@@ -13,7 +15,18 @@ const Home = () => {
   console.log("say kateqori", countProduct);
   console.log("alt category", altCategory);
 
-  return <div>Home</div>;
+  return (
+    <div className={style.container}>
+      <h1 className={style.headding}>Announces</h1>
+      <div className={style.cardContainer}>
+        <AnnounceCard />
+        <AnnounceCard />
+        <AnnounceCard />
+        <AnnounceCard />
+        <AnnounceCard />
+      </div>
+    </div>
+  );
 };
 
 export default Home;

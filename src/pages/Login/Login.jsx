@@ -33,7 +33,7 @@ const Login = () => {
   }, [navigate, user]);
 
   return (
-    <div className="registerContainer" style={{ height: "100vh" }}>
+    <div className="registerContainer">
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="registerHeading">LOG IN</h1>
 
