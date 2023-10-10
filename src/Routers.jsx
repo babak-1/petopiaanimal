@@ -9,6 +9,7 @@ import AuthRoutes from "./routes/AuthRoutes";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import NotFound from "./pages/NotFound/404";
 import CreateAnnounce from "./pages/CreateAnnounce/CreateAnnounce";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 const Routers = () => {
   return (
@@ -22,6 +23,7 @@ const Routers = () => {
 
       <Route element={<ProtectedRoutes />}>
         <Route path="/create-announcement" element={<CreateAnnounce />} />
+        <Route path="user-profile" element={<UserProfile />} />
       </Route>
 
       <Route path="/" element={<Home />} />

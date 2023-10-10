@@ -6,9 +6,13 @@ import { FiLogIn } from "react-icons/fi";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { LiaRegistered } from "react-icons/lia";
 import { BiLogOut } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
 import { logout } from "../../helper";
+import { NavLink, useNavigate } from "react-router-dom";
 const SideBar = ({ isOpenSidebar, setIsOpenSidebar }) => {
   const user = localStorage.getItem("user");
+  const navigate = useNavigate();
+
   return (
     <div
       className={`${style.container}  ${
@@ -35,6 +39,16 @@ const SideBar = ({ isOpenSidebar, setIsOpenSidebar }) => {
               </div>
               <span>Log out</span>
             </li>
+            <li
+              onClick={() => {
+                navigate("/user-profile"), setIsOpenSidebar(false);
+              }}
+            >
+              <div className={style.icons}>
+                <AiOutlineUser />
+              </div>
+              <span>User Profile</span>
+            </li>{" "}
           </>
         ) : (
           <>

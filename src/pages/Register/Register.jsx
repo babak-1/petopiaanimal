@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./Register.scss";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -7,13 +7,17 @@ import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa";
 const USER_REGEX =
   /^[A-Za-zƏəĞğIıİiÖöŞşÜüÇç][A-Za-zƏəĞğIıİiÖöŞşÜüÇç0-9_]{2,9}$/;
-// const PWD_REGEX =
-//   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 const Register = () => {
   const [toggle1, settToggle1] = useState(false);
   const [toggle2, settToggle2] = useState(false);
+  const emailInputRef = useRef(null);
   let password;
+
+  const handleButtonClick = () => {
+    const emailValue = emailInputRef.current.value;
+    console.log("Girilen mail", emailValue);
+  };
 
   const {
     register,
@@ -33,7 +37,6 @@ const Register = () => {
     <div className="registerContainer">
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="registerHeading">SIGN UP</h1>
-
         <div className="registerLabelInputGroups">
           <label htmlFor="username" className="registerLabels">
             Ad
@@ -60,6 +63,7 @@ const Register = () => {
         <div className="registerLabelInputGroups">
           <label className="registerLabels">E-mail</label>
           <input
+            ref={emailInputRef}
             className="registerInputs"
             {...register("email", {
               required: "Emailinizi qeyd edin",
@@ -74,6 +78,8 @@ const Register = () => {
           {errors.email && (
             <span className="registerErrMsg">{errors.email.message}</span>
           )}
+
+          <button onClick={handleButtonClick}>click</button>
         </div>
 
         <div className="registerLabelInputGroups">

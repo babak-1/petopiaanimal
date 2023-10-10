@@ -1,0 +1,35 @@
+@import "../../assets//style/variable.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .infoCont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 20px;
+
+        .profilPhoto {
+            background-color: $hoverSearchInpColor;
+            color: #fff;
+            font-size: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+    }
+
+    .userAnnounceCont {
+        border-top: 1px solid $borderColor;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
