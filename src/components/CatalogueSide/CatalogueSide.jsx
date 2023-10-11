@@ -7,8 +7,6 @@ const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
   const [breedOpenSide, setBreedOpenSide] = useState(false);
   const [breeds, setBreeds] = useState(null);
 
-  console.log("asas", breeds);
-
   const handleBreedSide = (id) => {
     setBreedOpenSide(true);
     const subCategory = allCategories?.response?.find(
