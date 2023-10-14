@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "./CreateAnnounce.module.scss";
 import { useForm } from "react-hook-form";
 import useFetch from "../../hooks/useFetch";
 import ClockLoader from "react-spinners/ClockLoader";
+import useBase64 from "../../hooks/useBase64";
+import axios from "axios";
+import { axiosPrivate } from "../../api/api";
 
 const CreateAnnounce = () => {
+  const fileInput = useRef(null);
   const { response: categories, loading } = useFetch(
     "/api/categories/getcategorieswithbreeds"
   );
@@ -12,6 +16,8 @@ const CreateAnnounce = () => {
   const { response: allCities } = useFetch("/api/cities");
 
   const [categoryId, setCategoryId] = useState("1");
+
+  const { base64Array, handleFileSelect } = useBase64();
 
   const {
     handleSubmit,
@@ -28,7 +34,24 @@ const CreateAnnounce = () => {
   }, [categoryId, categories, setValue]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    const announce = {
+      name: data.name,
+      content: data.content,
+      categoryId: data.categoryId,
+      breedId: data.breedId,
+      cityId: data.cityId,
+      imagePathes: base64Array,
+    };
+
+    async function createAnnounce(data) {
+      try {
+        await axiosPrivate.post("/api/announcements", data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    createAnnounce(announce);
   };
 
   if (loading) {
@@ -90,6 +113,18 @@ const CreateAnnounce = () => {
             </option>
           ))}
         </select>
+        <input
+          ref={fileInput}
+          {...register("images", { required: true })}
+          type="file"
+          multiple
+          onChange={handleFileSelect}
+        />
+        <div>
+          {base64Array.map((item) => (
+            <img src={item} alt="" />
+          ))}
+        </div>
         <button type="submit" className={style.btn}>
           Davam et
         </button>
