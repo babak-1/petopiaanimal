@@ -6,6 +6,7 @@ import InputMask from "react-input-mask";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 // const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -19,9 +20,15 @@ const Register = () => {
   const emailInputRef = useRef("");
   let password;
 
-  const handleButtonClick = () => {
-    const emailValue = emailInputRef.current.value;
-    console.log("Girilen mail", emailValue);
+  const handleButtonClick = async (email) => {
+    console.log(email);
+    try {
+      await axios.get(
+        `http://murad161-001-site1.ctempurl.com/api/users/sendcodetoemailforregister?email=${email}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
@@ -84,7 +91,13 @@ const Register = () => {
             <span className="registerErrMsg">{errors.email.message}</span>
           )}
 
-          <button onClick={handleButtonClick}>click</button>
+          <button
+            onClick={() => {
+              handleButtonClick(emailInputRef.current.value);
+            }}
+          >
+            click
+          </button>
         </div>
 
         <div className="registerLabelInputGroups">

@@ -6,10 +6,11 @@ import AnnounceCard from "../../components/AnnounceCard/AnnounceCard";
 import ClockLoader from "react-spinners/ClockLoader";
 
 const UserProfile = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const { response, loading } = useFetch("/api/users/profile");
-  const announces = useFetch("/api/announcements");
-  console.log("user", response);
-  console.log("announces", announces);
+  const announces = useFetch(`/api/announcements/getbyuser/${user?.id}`);
+
+  console.log(announces);
 
   if (loading) {
     return (
@@ -34,14 +35,14 @@ const UserProfile = () => {
       </div>
 
       <div className={style.userAnnounceCont}>
-        {response?.announcements.length === 0 ? (
+        {announces?.response?.length === 0 ? (
           <div className={style.empty}>Elanınız yoxdur</div>
         ) : (
           <div className={style.announcements}>
             <h4>Elanlariniz</h4>
-            {response?.announcements.map((announce) => {
-              <AnnounceCard key={announce?.id} />;
-            })}
+            {announces?.response?.map((announce) => (
+              <AnnounceCard key={announce?.id} />
+            ))}
           </div>
         )}
       </div>
