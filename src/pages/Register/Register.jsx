@@ -5,13 +5,18 @@ import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa";
+import useFetch from "../../hooks/useFetch";
+
+// const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+
 const USER_REGEX =
   /^[A-Za-zƏəĞğIıİiÖöŞşÜüÇç][A-Za-zƏəĞğIıİiÖöŞşÜüÇç0-9_]{2,9}$/;
 
 const Register = () => {
   const [toggle1, settToggle1] = useState(false);
   const [toggle2, settToggle2] = useState(false);
-  const emailInputRef = useRef(null);
+
+  const emailInputRef = useRef("");
   let password;
 
   const handleButtonClick = () => {
@@ -63,7 +68,6 @@ const Register = () => {
         <div className="registerLabelInputGroups">
           <label className="registerLabels">E-mail</label>
           <input
-            ref={emailInputRef}
             className="registerInputs"
             {...register("email", {
               required: "Emailinizi qeyd edin",
@@ -72,6 +76,7 @@ const Register = () => {
                 message: "Email düzgün qeyd olunmayıb",
               },
             })}
+            ref={emailInputRef}
             type="email"
             placeholder="nümunə@gmail.com"
           />

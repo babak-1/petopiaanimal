@@ -1,5 +1,10 @@
 @import "../../assets//style/variable.scss";
 
+.loading {
+    position: absolute;
+    bottom: -130px;
+}
+
 .container {
     position: absolute;
     bottom: -130px;
@@ -57,4 +62,27 @@
 
 .container::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (min-width:$categorySlideDesk) {
+    .container {
+        gap: 20px;
+        bottom: -120x;
+        width: 90%;
+
+        .categoryList {
+
+            .cardImageCont {
+                background-color: $searchInpColor;
+                padding: 10px;
+                font-size: 60px;
+                border-radius: 10px;
+
+                .cardImage {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
+    }
 }

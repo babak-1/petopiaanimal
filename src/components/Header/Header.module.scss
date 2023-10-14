@@ -17,11 +17,51 @@
         padding-top: 4px;
     }
 
-    .headerIcons:hover {
+
+    .logoutIcon:hover,
+    .profilIcon:hover,
+    .createIcon:hover {
         color: $inputHover;
+    }
+
+    .logoutIcon,
+    .profilIcon {
+        display: none;
     }
 
     .headerLogo {
         font-size: 20px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width:$categorySlideDesk) {
+    .headerContainer {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+        padding: 20px 5% 28px;
+        margin-bottom: 140px;
+        background-color: $headerBackgroundColor;
+
+
+        .headerIcons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .logoutIcon,
+        .profilIcon,
+        .createIcon {
+            display: block;
+            cursor: pointer;
+        }
+
+        .hamburgerBtn {
+            display: none;
+        }
     }
 }

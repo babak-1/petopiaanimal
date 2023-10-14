@@ -2,115 +2,97 @@ import React, { useState, useEffect } from "react";
 import style from "./CreateAnnounce.module.scss";
 import { useForm } from "react-hook-form";
 import useFetch from "../../hooks/useFetch";
+import ClockLoader from "react-spinners/ClockLoader";
 
 const CreateAnnounce = () => {
-  // usestate
-  const [selectCategory, setSelectCategory] = useState(null);
-  const [selectBreed, setSelectBreed] = useState(null);
-  const [selectCity, setSelectCity] = useState(null);
-  const [breeds, setBreeds] = useState([]);
-
-  // fetch
-  const allCategories = useFetch(
+  const { response: categories, loading } = useFetch(
     "/api/categories/getcategorieswithbreeds"
-  ).response;
+  );
 
-  const allCities = useFetch("/api/cities").response;
+  const { response: allCities } = useFetch("/api/cities");
 
-  useEffect(() => {
-    if (selectCategory) {
-      const selectedCategory = allCategories.find(
-        (category) => category.id == selectCategory
-      );
-      if (selectedCategory) {
-        setBreeds(selectedCategory.breeds);
-      }
-    } else {
-      setBreeds([]);
-    }
-  }, [selectCategory, allCategories]);
+  const [categoryId, setCategoryId] = useState("1");
 
   const {
     handleSubmit,
     register,
-    reset,
+    setValue,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
 
+  useEffect(() => {
+    const firstBreedId = categories?.find(
+      (cat) => cat.id === parseInt(categoryId)
+    )?.breeds[0]?.id;
+    setValue("breedId", firstBreedId);
+  }, [categoryId, categories, setValue]);
+
   const onSubmit = (data) => {
     console.log(data);
-    reset();
   };
 
-  // console.log
-  console.log("active kateqori id", selectCategory);
-  console.log("active alt kateqori id", selectBreed);
-  console.log("active seher", selectCity);
+  if (loading) {
+    return (
+      <div className={style.loadingCont}>
+        <ClockLoader color="#36d7b7" />
+      </div>
+    );
+  }
 
   return (
     <div className={style.container}>
-      <form>
-        <h3>Create Announce</h3>
-        <ul>
-          <li>
-            <input
-              type="text"
-              {...register("username", {
-                required: "Username qeyd edin",
-              })}
-              placeholder="name"
-            />
-          </li>
-          <li>
-            <input
-              type="text"
-              className={`${style.contentInput}`}
-              placeholder="Vacib meqamlari qeyd et"
-            />
-          </li>
-          <li>
-            <select
-              name="breeds"
-              id="breeds"
-              onChange={(e) => setSelectCategory(e.target.value)}
-            >
-              {allCategories?.map((category) => (
-                <option key={category?.id} value={category?.id}>
-                  {category?.name}
-                </option>
-              ))}
-            </select>
-          </li>
-
-          <li>
-            <select
-              name="breeds"
-              id="breeds"
-              onChange={(e) => setSelectBreed(e.target.value)}
-            >
-              {breeds.map((breed) => (
-                <option key={breed.id} value={breed.id}>
-                  {breed.name}
-                </option>
-              ))}
-            </select>
-          </li>
-          <li>
-            <select
-              name="cities"
-              id="cities"
-              onChange={(e) => setSelectCity(e.target.value)}
-            >
-              {allCities?.map((city) => (
-                <option key={city?.id} value={city?.id}>
-                  {city?.name}
-                </option>
-              ))}
-            </select>
-          </li>
-          <li></li>
-        </ul>
-        <button onClick={handleSubmit(onSubmit)}>Davam et</button>
+      <h3 className={style.headding}>Create Announce</h3>
+      <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <input
+          type="text"
+          {...register("name")}
+          placeholder="name"
+          className={`${style.input} ${style.nameInput}`}
+        />
+        <input
+          type="text"
+          className={`${style.contentInput} ${style.input}`}
+          placeholder="Vacib meqamlari qeyd et"
+          {...register("content")}
+        />
+        <select
+          {...register("categoryId")}
+          onChange={(e) => setCategoryId(e.target.value)}
+          className={style.select}
+        >
+          {categories?.map((cat) => (
+            <option key={cat?.id} value={cat?.id} className={style.options}>
+              {cat.name}
+            </option>
+          ))}
+        </select>
+        <select
+          {...register("breedId")}
+          onChange={(e) => setValue("breedId", e.target.value)}
+          className={style.select}
+        >
+          {categories
+            .find((cat) => cat?.id === parseInt(categoryId))
+            .breeds?.map((breed) => (
+              <option
+                key={breed?.id}
+                value={breed?.id}
+                className={style.options}
+              >
+                {breed?.name}
+              </option>
+            ))}
+        </select>
+        <select {...register("cityId")} className={style.select}>
+          {allCities?.map((city) => (
+            <option key={city?.id} value={city?.id} className={style.options}>
+              {city.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className={style.btn}>
+          Davam et
+        </button>
       </form>
     </div>
   );

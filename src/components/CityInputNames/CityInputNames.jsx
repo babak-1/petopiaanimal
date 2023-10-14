@@ -7,7 +7,7 @@ const CityInputNames = ({ setSelectedCity, setIsOpenCity }) => {
   const cities = useFetch("api/cities");
   console.log("seherler", cities);
 
-  const broo = {
+  const iconSyle = {
     width: "100%",
     height: "90px",
     margin: "auto",
@@ -24,7 +24,7 @@ const CityInputNames = ({ setSelectedCity, setIsOpenCity }) => {
     <div className={style.container}>
       <ul>
         {cities.loading ? (
-          <div style={broo}>
+          <div style={iconSyle}>
             <DotLoader color="#36d7b7" size={50} />
           </div>
         ) : (

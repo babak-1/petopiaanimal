@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "./CatalogueSide.module.scss";
 import { GrFormClose } from "react-icons/gr";
 import BreedSide from "../BreedSide/BreedSide";
@@ -6,6 +6,20 @@ import BreedSide from "../BreedSide/BreedSide";
 const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
   const [breedOpenSide, setBreedOpenSide] = useState(false);
   const [breeds, setBreeds] = useState(null);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (sliderRef.current && !sliderRef.current.contains(e.target)) {
+        setBreedOpenSide(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   console.log("asas", breeds);
 
@@ -16,12 +30,14 @@ const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
     );
     setBreeds(subCategory?.breeds);
   };
+
   return (
     <>
       <div
         className={`${style.container}  ${
           openSide ? style.openSidebar : style.closeSidebar
         }`}
+        ref={sliderRef}
       >
         <div className={style.header}>
           <div className={style.icon}>

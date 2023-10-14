@@ -5,6 +5,8 @@ import { IoIosAddCircle } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
 import SearchInput from "../SearchInput/SearchInput";
 import { logout } from "../../helper";
+import { BiLogOut } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
 import { useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import CatalogueSlider from "../CatalogueSlider/CatalogueSlider";
@@ -26,7 +28,7 @@ const Header = () => {
         setIsOpenSidebar={setIsOpenSidebar}
       />
       <div
-        className={style.headerIcons}
+        className={`${style.headerIcons} ${style.hamburgerBtn}`}
         onClick={() => setIsOpenSidebar(!isOpenSidebar)}
       >
         <RxHamburgerMenu />
@@ -38,8 +40,23 @@ const Header = () => {
       <div className={style.headerIcons}>
         {user ? (
           <>
-            <IoIosAddCircle onClick={() => navigate("/create-announcement")} />
-            {/* <BiLogOut onClick={logout} /> */}
+            <div
+              title="Profiliniz"
+              className={style.profilIcon}
+              onClick={() => {
+                navigate("/user-profile"), setIsOpenSidebar(false);
+              }}
+            >
+              <AiOutlineUser />
+            </div>
+            <div title="Yeni elan yarat" className={style.createIcon}>
+              <IoIosAddCircle
+                onClick={() => navigate("/create-announcement")}
+              />
+            </div>
+            <div className={style.logoutIcon} title="Hesabdan çıx">
+              <BiLogOut onClick={logout} />
+            </div>
           </>
         ) : (
           <IoMdPerson onClick={() => navigate("/login")} />

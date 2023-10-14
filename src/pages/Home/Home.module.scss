@@ -15,3 +15,11 @@
         justify-content: center;
     }
 }
+
+
+@media screen and (min-width:$categorySlideDesk) {
+    .container {
+        padding-top: 40px;
+        background-color: $mainGray;
+    }
+}

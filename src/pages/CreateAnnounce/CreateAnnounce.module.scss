@@ -1,1 +1,81 @@
 @import "../../assets//style/variable.scss";
+
+.loadingCont {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $mainGray;
+
+}
+
+.container {
+
+    background-color: $mainGray;
+
+    .headding {
+        text-align: center;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .input {
+            outline: none;
+            border: 1px solid $borderColor;
+            border-radius: 6px;
+        }
+
+        .nameInput {
+            padding: 10px;
+            width: 200px;
+        }
+
+        .contentInput {
+            height: 200px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .content::placeholder {
+            position: absolute;
+
+        }
+
+        .select {
+            width: 200px;
+            background-color: grey;
+            color: #fff;
+            outline: none;
+            border-radius: 6px;
+            padding: 5px;
+
+
+            .options {
+                color: #fff;
+                background-color: $mainColor;
+            }
+        }
+
+
+        .btn {
+            border: none;
+            width: 200px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: $mainColor;
+            color: #fff;
+        }
+
+    }
+}
+
+
+@media screen and (min-width:$categorySlideDesk) {
+    .container {
+        padding: 50px;
+    }
+}

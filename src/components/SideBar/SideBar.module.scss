@@ -65,3 +65,9 @@
     transition: all 0.5s;
 
 }
+
+@media screen and (min-width:$categorySlideDesk) {
+    .container {
+        display: none;
+    }
+}

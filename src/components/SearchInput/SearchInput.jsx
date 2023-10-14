@@ -39,7 +39,7 @@ const SearchInput = () => {
         <div className={style.searchIcons}>
           <BsSearchHeart />
         </div>
-        <input type="text" placeholder="Category" />
+        <input type="text" placeholder="Search" />
       </form>
     </div>
   );
