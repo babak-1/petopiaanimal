@@ -21,8 +21,6 @@ const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
     };
   }, []);
 
-  console.log("asas", breeds);
-
   const handleBreedSide = (id) => {
     setBreedOpenSide(true);
     const subCategory = allCategories?.response?.find(
