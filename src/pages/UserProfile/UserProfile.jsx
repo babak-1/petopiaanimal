@@ -10,7 +10,14 @@ const UserProfile = () => {
   const { response, loading } = useFetch("/api/users/profile");
   const announces = useFetch(`/api/announcements/getbyuser/${user?.id}`);
 
-  console.log(announces);
+  // const photos = useFetch(
+  //   `/api/photos/getbyphotogroup?photoGroupId=${announces?.response[0]?.photoGroupId}`
+  // );
+
+  // console.log("fotolar", photos);
+
+  console.log("anonslar", announces);
+  console.log(response);
 
   if (loading) {
     return (
@@ -41,7 +48,7 @@ const UserProfile = () => {
           <div className={style.announcements}>
             <h4>Elanlariniz</h4>
             {announces?.response?.map((announce) => (
-              <AnnounceCard key={announce?.id} />
+              <AnnounceCard key={announce?.id} announce={announce} />
             ))}
           </div>
         )}

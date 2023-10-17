@@ -16,15 +16,15 @@ const USER_REGEX =
 const Register = () => {
   const [toggle1, settToggle1] = useState(false);
   const [toggle2, settToggle2] = useState(false);
+  const [emailValue, setEmailValue] = useState("");
+  console.log("emailValue", emailValue);
 
-  const emailInputRef = useRef("");
   let password;
 
-  const handleButtonClick = async (email) => {
-    console.log(email);
+  const handleButtonClick = async () => {
     try {
       await axios.get(
-        `http://murad161-001-site1.ctempurl.com/api/users/sendcodetoemailforregister?email=${email}`
+        `http://murad161-001-site1.ctempurl.com/api/users/sendcodetoemailforregister?email=${emailValue}`
       );
     } catch (error) {
       console.log(error);
@@ -41,21 +41,55 @@ const Register = () => {
 
   password = watch("password", "");
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    data.profilePhotoUrl = null;
+    try {
+      await axios.post(
+        "http://murad161-001-site1.ctempurl.com/api/users/register",
+        data
+      );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log(data);
+    }
     reset();
   };
+
   return (
     <div className="registerContainer">
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="registerHeading">SIGN UP</h1>
         <div className="registerLabelInputGroups">
           <label htmlFor="username" className="registerLabels">
-            Ad
+            İstifadəçi adı
           </label>
           <input
             className="registerInputs"
             {...register("username", {
+              required: "İstifadəçi adınızı qeyd edin",
+              pattern: {
+                value: USER_REGEX,
+                message:
+                  "İstifadəçi adı qaydaları. (Başlanğıcda simvol hərf olmalıdır,ümumilikdə isə hərf,rəqəm və alt xətt '_'  ola bilər, 3simvoldan az və 10 simvoldan çox olmamalıdır.)",
+              },
+            })}
+            type="text"
+            placeholder="İstifadəçi adınızı daxil edin"
+            id="username"
+          />
+          {errors.username && (
+            <span className="registerErrMsg">{errors.username.message}</span>
+          )}
+        </div>
+
+        <div className="registerLabelInputGroups">
+          <label htmlFor="firstName" className="registerLabels">
+            Ad
+          </label>
+          <input
+            className="registerInputs"
+            {...register("firstName", {
               required: "Adınızı qeyd edin",
               pattern: {
                 value: USER_REGEX,
@@ -65,10 +99,33 @@ const Register = () => {
             })}
             type="text"
             placeholder="Adınızı daxil edin"
-            id="username"
+            id="firstName"
           />
-          {errors.username && (
-            <span className="registerErrMsg">{errors.username.message}</span>
+          {errors.firstName && (
+            <span className="registerErrMsg">{errors.firstName.message}</span>
+          )}
+        </div>
+
+        <div className="registerLabelInputGroups">
+          <label htmlFor="lastName" className="registerLabels">
+            Soyad
+          </label>
+          <input
+            className="registerInputs"
+            {...register("lastName", {
+              required: "Soyadınızı qeyd edin",
+              pattern: {
+                value: USER_REGEX,
+                message:
+                  "İstifadəçi adı qaydaları. (Başlanğıcda simvol hərf olmalıdır,ümumilikdə isə hərf,rəqəm və alt xətt '_'  ola bilər, 3simvoldan az və 10 simvoldan çox olmamalıdır.)",
+              },
+            })}
+            type="text"
+            placeholder="Soyadınızı daxil edin"
+            id="lastName"
+          />
+          {errors.lastName && (
+            <span className="registerErrMsg">{errors.lastName.message}</span>
           )}
         </div>
 
@@ -83,7 +140,7 @@ const Register = () => {
                 message: "Email düzgün qeyd olunmayıb",
               },
             })}
-            ref={emailInputRef}
+            onChange={(e) => setEmailValue(e.target.value)}
             type="email"
             placeholder="nümunə@gmail.com"
           />
@@ -92,12 +149,37 @@ const Register = () => {
           )}
 
           <button
+            className="emailButton"
             onClick={() => {
-              handleButtonClick(emailInputRef.current.value);
+              handleButtonClick();
             }}
+            title="butona klik etdikdə email ünvanına 4 rəqəmli verifikasiya kodu göndəriləcək"
           >
-            click
+            Click
           </button>
+        </div>
+
+        <div className="registerLabelInputGroups">
+          <label htmlFor="veritificationCode" className="registerLabels">
+            Verifikasiya kodu
+          </label>
+          <input
+            className="registerInputs"
+            {...register("veritificationCode", {
+              required: "Verifikasiya kodun daxil edin",
+              maxLength: {
+                value: 4,
+              },
+            })}
+            type="number"
+            placeholder="4 rəqəmli kodu daxil edin"
+            id="veritificationCode"
+          />
+          {errors.veriticationCode && (
+            <span className="registerErrMsg">
+              {errors.veriticationCode.message}
+            </span>
+          )}
         </div>
 
         <div className="registerLabelInputGroups">
@@ -129,7 +211,7 @@ const Register = () => {
             {...register("password", {
               required: "Parolunuzu qeyd edin",
               minLength: {
-                value: 4,
+                value: 8,
                 message: "Simvol sayı 4-dən çox olmalıdır",
               },
             })}
