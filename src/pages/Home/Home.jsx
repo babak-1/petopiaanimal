@@ -2,28 +2,20 @@ import React from "react";
 import useFetch from "../../hooks/useFetch";
 import style from "./Home.module.scss";
 import AnnounceCard from "../../components/AnnounceCard/AnnounceCard";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const user = useFetch(`api/users/profile`);
-  const categories = useFetch(`api/categories`);
-  const countProduct = useFetch(
-    "/api/categories/getcategorieswithannouncementscount"
-  );
-  const altCategory = useFetch("/api/categories/getcategorieswithbreeds");
-  console.log(user);
-  console.log("kategory", categories);
-  console.log("say kateqori", countProduct);
-  console.log("alt category", altCategory);
+  const navigate = useNavigate();
+  const { response } = useFetch("/api/announcements?page=1");
+  console.log(response);
 
   return (
     <div className={style.container}>
       <h1 className={style.headding}>Announces</h1>
       <div className={style.cardContainer}>
-        <AnnounceCard />
-        <AnnounceCard />
-        <AnnounceCard />
-        <AnnounceCard />
-        <AnnounceCard />
+        {response?.map((announce) => (
+          <AnnounceCard announce={announce} key={announce?.id} />
+        ))}
       </div>
     </div>
   );

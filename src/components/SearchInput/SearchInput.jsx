@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./SearchInput.module.scss";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -23,7 +23,7 @@ const SearchInput = () => {
           placeholder="City"
           disabled
           className={style.cityInput}
-          value={selectedCity ? selectedCity.name : ""}
+          value={selectedCity ? selectedCity : ""}
         />
         {isOpenCity ? (
           <CityInputNames
@@ -41,6 +41,8 @@ const SearchInput = () => {
         </div>
         <input type="text" placeholder="Search" />
       </form>
+
+      <button className={style.btn}>Axtar</button>
     </div>
   );
 };

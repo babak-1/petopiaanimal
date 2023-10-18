@@ -2,10 +2,12 @@ import React from "react";
 import style from "./CityInputName.module.scss";
 import useFetch from "../../hooks/useFetch";
 import DotLoader from "react-spinners/DotLoader";
+import { useNavigate } from "react-router-dom";
 
 const CityInputNames = ({ setSelectedCity, setIsOpenCity }) => {
   const cities = useFetch("api/cities");
   console.log("seherler", cities);
+  const navigate = useNavigate();
 
   const iconSyle = {
     width: "100%",
@@ -17,9 +19,20 @@ const CityInputNames = ({ setSelectedCity, setIsOpenCity }) => {
   };
 
   const handleCityClick = (city) => {
-    setSelectedCity(city);
     setIsOpenCity(false);
+    setSelectedCity(city?.name);
+    const search = JSON.parse(localStorage.getItem("search"));
+
+    const newSearch = {
+      ...search,
+      city: city.id,
+    };
+
+    localStorage.setItem("search", JSON.stringify(newSearch));
+
+    navigate(`/announce-list`);
   };
+
   return (
     <div className={style.container}>
       <ul>

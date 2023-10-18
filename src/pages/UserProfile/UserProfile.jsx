@@ -10,14 +10,8 @@ const UserProfile = () => {
   const { response, loading } = useFetch("/api/users/profile");
   const announces = useFetch(`/api/announcements/getbyuser/${user?.id}`);
 
-  // const photos = useFetch(
-  //   `/api/photos/getbyphotogroup?photoGroupId=${announces?.response[0]?.photoGroupId}`
-  // );
-
-  // console.log("fotolar", photos);
-
   console.log("anonslar", announces);
-  console.log(response);
+  console.log("user", response);
 
   if (loading) {
     return (

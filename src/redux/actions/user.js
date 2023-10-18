@@ -16,18 +16,16 @@ export const getUser = createAsyncThunk(
   }
 );
 
-export const getVerification = createAsyncThunk(
-  "verification/fetchVerification",
-  async (data, { rejectWithValue }) => {
+export const getUserProfile = createAsyncThunk(
+  "userProfile/fetchUserProfile",
+  async () => {
     try {
       const result = await axios.get(
-        `${
-          import.meta.env.VITE_APP_BASE_URL
-        }/api/users/sendcodetoemailforregister`,
-        data
+        `${import.meta.env.VITE_APP_BASE_URL}/api/users/profile`
       );
+      return result.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      console.log(error);
     }
   }
 );

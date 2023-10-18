@@ -10,6 +10,8 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import NotFound from "./pages/NotFound/404";
 import CreateAnnounce from "./pages/CreateAnnounce/CreateAnnounce";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import Details from "./pages/Details/Details";
+import AnnounceList from "./pages/AnnounceList/AnnounceList";
 
 const Routers = () => {
   return (
@@ -27,8 +29,9 @@ const Routers = () => {
       </Route>
 
       <Route path="/" element={<Home />} />
-
+      <Route path="announce-details/:id" element={<Details />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="announce-list" element={<AnnounceList />} />
     </Routes>
   );
 };
