@@ -43,7 +43,10 @@ const Register = () => {
   password = watch("password", "");
 
   const onSubmit = async (data) => {
-    data.profilePhotoUrl = null;
+    data.profilePhotoUrl =
+      "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png";
+
+    console.log(data);
     try {
       await axios.post(
         "http://murad161-001-site1.ctempurl.com/api/users/register",
@@ -55,7 +58,7 @@ const Register = () => {
     } finally {
       console.log(data);
     }
-    reset();
+    // reset();
   };
 
   return (
@@ -151,6 +154,7 @@ const Register = () => {
           )}
 
           <button
+            type="button"
             className="emailButton"
             onClick={() => {
               handleButtonClick();
