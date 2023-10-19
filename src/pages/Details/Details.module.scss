@@ -1,7 +1,63 @@
+@import "../../assets//style/variable.scss";
+
 .container {
 
     .sliderPart {
         width: 90%;
         margin: auto;
+    }
+
+    .infoPart {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .nameAndContent {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .otherInfo {
+            display: flex;
+            gap: 20px;
+            background-color: $mainGray;
+            border-radius: 6px;
+            padding: 5px;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .otherInfoUl {
+                li {
+                    color: $mainColor;
+                    background-color: #fff;
+                    border-radius: 6px;
+                    padding: 0px 3px;
+                }
+            }
+        }
+
+        .mobileNumber {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}
+
+
+@media screen and (min-width:$categorySlideDesk) {
+
+    .container {
+        display: flex;
+
+        .sliderPart {
+            width: 50%;
+        }
+
     }
 }

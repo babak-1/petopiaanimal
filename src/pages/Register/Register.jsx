@@ -229,7 +229,7 @@ const Register = () => {
           </span>
         </div>
 
-        {/* <div className="registerLabelInputGroups">
+        <div className="registerLabelInputGroups">
           <label htmlFor="cpassword" className="registerLabels">
             Confirm Password
           </label>
@@ -254,7 +254,7 @@ const Register = () => {
           <span onClick={() => settToggle2(!toggle2)} className="registerEyes">
             {toggle2 ? <FaEyeSlash /> : <AiFillEye />}
           </span>
-        </div> */}
+        </div>
 
         <input type="submit" className="registerSbmtBtn" value="SIGN UP" />
 
