@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./Register.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 import { AiFillEye } from "react-icons/ai";
@@ -18,6 +18,7 @@ const Register = () => {
   const [toggle2, settToggle2] = useState(false);
   const [emailValue, setEmailValue] = useState("");
   console.log("emailValue", emailValue);
+  const navigate = useNavigate();
 
   let password;
 
@@ -48,6 +49,7 @@ const Register = () => {
         "http://murad161-001-site1.ctempurl.com/api/users/register",
         data
       );
+      navigate("/login");
     } catch (error) {
       console.log(error);
     } finally {
@@ -227,7 +229,7 @@ const Register = () => {
           </span>
         </div>
 
-        <div className="registerLabelInputGroups">
+        {/* <div className="registerLabelInputGroups">
           <label htmlFor="cpassword" className="registerLabels">
             Confirm Password
           </label>
@@ -252,7 +254,7 @@ const Register = () => {
           <span onClick={() => settToggle2(!toggle2)} className="registerEyes">
             {toggle2 ? <FaEyeSlash /> : <AiFillEye />}
           </span>
-        </div>
+        </div> */}
 
         <input type="submit" className="registerSbmtBtn" value="SIGN UP" />
 

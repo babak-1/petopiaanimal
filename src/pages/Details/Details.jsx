@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Details.module.scss";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import PhotoSlider from "../../components/PhotoSlider/PhotoSlider";
 const Details = () => {
   const announceId = useParams().id;
   const { response, loading } = useFetch(`/api/announcements/${announceId}`);
@@ -29,9 +30,10 @@ const Details = () => {
   return (
     <div className={style.container}>
       <div className={style.sliderPart}>
-        {photos?.response?.map((res) => (
+        {/* {photos?.response?.map((res) => (
           <img src={res?.url} alt="" style={{ width: "100px" }} key={res.id} />
-        ))}
+        ))} */}
+        <PhotoSlider photos={photos} />
       </div>
       <div className={style.infoPart}>
         <div className={style.nameAndContent}>

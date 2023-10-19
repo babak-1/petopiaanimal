@@ -3,8 +3,10 @@ import style from "./CatalogueSlider.module.scss";
 import { GrCatalog } from "react-icons/gr";
 import useFetch from "../../hooks/useFetch";
 import CatalogueSide from "../CatalogueSide/CatalogueSide";
+import { useNavigate } from "react-router-dom";
 
 const CatalogueSlider = () => {
+  const navigate = useNavigate();
   const [openSide, setOpenSide] = useState(false);
 
   const allCategories = useFetch("/api/categories/getcategorieswithbreeds");
@@ -76,6 +78,7 @@ const CatalogueSlider = () => {
             key={category?.id}
             className={style.categoryList}
             title={category?.name}
+            onClick={() => navigate("/announce-list")}
           >
             <div className={style.cardImageCont}>
               <img

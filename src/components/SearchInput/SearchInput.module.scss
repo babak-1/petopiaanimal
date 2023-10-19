@@ -42,9 +42,44 @@
         }
     }
 
-    .citySearchCont,
-    .categorySearchCont:focus {}
+    .citySearchCont {
+        .container {
+            background: $searchInpColor;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 4px;
+            padding: 10px;
+            height: 100px;
+            overflow-x: hidden;
+            position: absolute;
+            width: 100%;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            z-index: 1;
 
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+
+                li {
+                    font-size: 15px;
+                    font-weight: normal;
+                }
+
+                li:hover {
+                    background-color: $hoverSearchInpColor;
+                    width: 100%;
+                    text-align: center;
+                    border-radius: 6px;
+                }
+            }
+        }
+
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+    }
 
 
 

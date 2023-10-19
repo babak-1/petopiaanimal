@@ -1,0 +1,103 @@
+.mySwiperDetails2 {
+  object-fit: cover;
+
+  height: auto;
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    padding: 20px;
+    width: 80%;
+  }
+
+  #app {
+    height: 100%;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    @media screen and (min-width: 600px) {
+      display: block;
+      width: 400px;
+      height: 400px;
+    }
+
+    display: block;
+    width: 150px;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
+
+    @media screen and (min-width: 600px) {
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+}
+
+.mySwiperDetails {
+  @media screen and (min-width: 600px) {
+    width: 400px;
+
+    .swiper-slide img {
+      width: 150px;
+      height: 200px;
+      object-fit: contain;
+    }
+  }
+
+  width: 100%;
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+
+  .swiper-slide img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .swiper-button-next:after {
+    font-weight: 600;
+    font-size: 20px;
+    color: #2e3a59;
+  }
+
+  .swiper-button-before:after {
+    font-size: 20px;
+  }
+
+  .swiper-button-prev:after {
+    font-weight: 600;
+    font-size: 20px;
+    color: #2e3a59;
+  }
+}
