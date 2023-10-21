@@ -78,7 +78,7 @@ const CatalogueSlider = () => {
             key={category?.id}
             className={style.categoryList}
             title={category?.name}
-            onClick={() => navigate("/announce-list")}
+            onClick={() => navigate(`/cards-list/${category?.id}`)}
           >
             <div className={style.cardImageCont}>
               <img

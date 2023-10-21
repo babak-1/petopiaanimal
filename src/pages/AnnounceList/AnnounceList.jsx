@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import style from "./AnnounceList.module.scss";
 import useFetch from "../../hooks/useFetch";
 import { useSearchParams } from "react-router-dom";
+import AnnounceCard from "../../components/AnnounceCard/AnnounceCard";
 const AnnounceList = () => {
   const search = JSON.parse(localStorage.getItem("search"));
 
@@ -22,7 +23,20 @@ const AnnounceList = () => {
 
   console.log("response", response);
 
-  return <div>AnnounceList</div>;
+  if (response?.length == 0) {
+    return <div className={style.empty}>Axtarışınıza uyğun elan yoxdur</div>;
+  }
+
+  return (
+    <div className={style.container}>
+      <h2>Elanlar</h2>
+      <div className={style.cardList}>
+        {response?.map((announce) => (
+          <AnnounceCard announce={announce} key={announce?.id} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default AnnounceList;

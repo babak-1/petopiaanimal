@@ -11,6 +11,7 @@
     margin-bottom: 140px;
     background-color: $headerBackgroundColor;
 
+
     .headerIcons {
         color: $mainColor;
         font-size: 20px;
@@ -46,6 +47,8 @@
         padding: 20px 5% 28px;
         margin-bottom: 140px;
         background-color: $headerBackgroundColor;
+        box-shadow: 0 4px 1px -1px rgb(218, 213, 213);
+
 
 
         .headerIcons {

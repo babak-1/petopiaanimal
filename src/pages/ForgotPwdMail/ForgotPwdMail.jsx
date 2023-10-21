@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -9,12 +10,19 @@ const ForgotPwdMail = () => {
     formState: { errors },
   } = useForm({ mode: "onTouched" });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    try {
+      await axios.post(
+        `/api/users/sendcodetoemailforresetpassword?email=${data.email}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
     console.log(data);
-    reset();
+    // reset();
   };
   return (
-    <div className="registerContainer" style={{ height: "100vh" }}>
+    <div className="registerContainer" style={{ padding: "40px 0px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1
           className="registerHeading"
