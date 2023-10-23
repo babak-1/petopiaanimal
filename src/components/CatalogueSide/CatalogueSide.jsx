@@ -2,11 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import style from "./CatalogueSide.module.scss";
 import { GrFormClose } from "react-icons/gr";
 import BreedSide from "../BreedSide/BreedSide";
+import { useNavigate } from "react-router-dom";
 
 const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
   const [breedOpenSide, setBreedOpenSide] = useState(false);
   const [breeds, setBreeds] = useState(null);
   const sliderRef = useRef(null);
+  const navigate = useNavigate();
+
+  console.log("breedsName", breeds);
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -26,7 +30,12 @@ const CatalogueSide = ({ openSide, setOpenSide, allCategories }) => {
     const subCategory = allCategories?.response?.find(
       (category) => category.id === id
     );
+    console.log("sublength", subCategory?.breeds);
     setBreeds(subCategory?.breeds);
+
+    if (subCategory?.breeds.length === 0) {
+      navigate(`/cards-list/${subCategory?.id}`);
+    }
   };
 
   return (

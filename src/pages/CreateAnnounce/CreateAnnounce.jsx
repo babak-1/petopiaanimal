@@ -121,8 +121,8 @@ const CreateAnnounce = () => {
           onChange={handleFileSelect}
         />
         <div>
-          {base64Array.map((item) => (
-            <img src={item} alt="" />
+          {base64Array.map((item, index) => (
+            <img src={item} alt="" key={index} />
           ))}
         </div>
         <button type="submit" className={style.btn}>
