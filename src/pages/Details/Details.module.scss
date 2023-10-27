@@ -1,6 +1,8 @@
 @import "../../assets//style/variable.scss";
 
 .container {
+    background-color: $mainGray;
+    padding: 30px 60px;
 
     .sliderPart {
         width: 90%;
@@ -12,6 +14,8 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        background-color: rgb(217, 211, 179);
+        border-radius: 12px;
 
         .nameAndContent {
             display: flex;
@@ -54,6 +58,8 @@
 
     .container {
         display: flex;
+        align-items: center;
+
 
         .sliderPart {
             width: 50%;
