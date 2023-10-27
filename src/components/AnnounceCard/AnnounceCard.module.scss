@@ -1,7 +1,7 @@
 @import "../../assets//style/variable.scss";
 
 .container {
-    width: 40%;
+    width: 250px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -23,11 +23,12 @@
         padding: 5px 10px;
 
         .cityName {
-            font-size: 8px;
+            font-size: 14px;
+            color: rgb(165, 165, 99);
         }
 
         .name {
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 300;
         }
     }
@@ -65,6 +66,19 @@
             margin: auto;
             height: 100px;
             transition: .5s ease;
+        }
+
+        .cardInfo {
+            padding: 5px 10px;
+
+            .cityName {
+                font-size: 8px;
+            }
+
+            .name {
+                font-size: 15px;
+                font-weight: 300;
+            }
         }
     }
 }

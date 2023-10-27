@@ -1,18 +1,16 @@
 import React from "react";
-import style from "./CardList.module.scss";
+import style from "./BreedCardList.module.scss";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import AnnounceCard from "../../components/AnnounceCard/AnnounceCard";
 import ClockLoader from "react-spinners/ClockLoader";
 
-const CardsList = () => {
-  const categoryId = useParams().id;
+const BreedCardList = () => {
+  const breedId = useParams().id;
 
   const { response, loading } = useFetch(
-    `/api/announcements/getbycategory/categoryid?categoryId=${categoryId}`
+    `/api/announcements/getbybreed?breedId=${breedId}`
   );
-
-  console.log(response);
 
   if (response?.length == 0) {
     return (
@@ -42,4 +40,4 @@ const CardsList = () => {
   );
 };
 
-export default CardsList;
+export default BreedCardList;

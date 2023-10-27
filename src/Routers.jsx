@@ -13,6 +13,7 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import Details from "./pages/Details/Details";
 import AnnounceList from "./pages/AnnounceList/AnnounceList";
 import CardsList from "./pages/CardsList/CardsList";
+import BreedCardList from "./pages/BreedCardsList/BreedCardList";
 
 const Routers = () => {
   return (
@@ -34,6 +35,7 @@ const Routers = () => {
       <Route path="*" element={<NotFound />} />
       <Route path="announce-list" element={<AnnounceList />} />
       <Route path="cards-list/:id" element={<CardsList />} />
+      <Route path="breed-cards-list/:id" element={<BreedCardList />} />
     </Routes>
   );
 };

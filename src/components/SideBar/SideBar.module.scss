@@ -21,15 +21,30 @@
         li {
             background-color: #fff;
             padding: 15px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
 
-            .icons {
-                padding-top: 5px;
-                color: $hoverSearchInpColor;
-                font-size: 15px;
+            .liCont {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                cursor: pointer;
+                width: 150px;
+
+                .icons {
+                    padding-top: 5px;
+                    color: $hoverSearchInpColor;
+                    font-size: 15px;
+                }
             }
+
+            .liCont:hover {
+                color: $mainColor;
+
+                .icons {
+                    color: $mainColor;
+                }
+            }
+
+
         }
     }
 

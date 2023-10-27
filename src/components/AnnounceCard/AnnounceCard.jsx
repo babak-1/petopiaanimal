@@ -17,7 +17,7 @@ const AnnounceCard = ({ announce }) => {
   return (
     <div
       className={style.container}
-      onClick={() => navigate(`announce-details/${announce.id}`)}
+      onClick={() => navigate(`/announce-details/${announce.id}`)}
     >
       <img
         src={photos?.response?.[0]?.url}

@@ -33,37 +33,56 @@ const SideBar = ({ isOpenSidebar, setIsOpenSidebar }) => {
         {user ? (
           <>
             {" "}
-            <li onClick={logout}>
-              <div className={style.icons}>
-                <BiLogOut />
+            <li>
+              <div className={style.liCont} onClick={logout}>
+                <div className={style.icons}>
+                  <BiLogOut />
+                </div>
+                <span onClick={logout}>Log out</span>
               </div>
-              <span>Log out</span>
             </li>
-            <li
-              onClick={() => {
-                navigate("/user-profile"), setIsOpenSidebar(false);
-              }}
-            >
-              <div className={style.icons}>
-                <AiOutlineUser />
+            <li>
+              <div
+                className={style.liCont}
+                onClick={() => {
+                  navigate("/user-profile"), setIsOpenSidebar(false);
+                }}
+              >
+                <div className={style.icons}>
+                  <AiOutlineUser />
+                </div>
+                <span>User Profile</span>
               </div>
-              <span>User Profile</span>
             </li>{" "}
           </>
         ) : (
           <>
             {" "}
             <li>
-              <div className={style.icons}>
-                <FiLogIn />
+              <div
+                className={style.liCont}
+                onClick={() => {
+                  navigate("/login"), setIsOpenSidebar(false);
+                }}
+              >
+                <div className={style.icons}>
+                  <FiLogIn />
+                </div>
+                <span>Log in</span>
               </div>
-              <span>Log in</span>
             </li>
             <li>
-              <div className={style.icons}>
-                <LiaRegistered />
-              </div>{" "}
-              <span>Sign up</span>
+              <div
+                className={style.liCont}
+                onClick={() => {
+                  navigate("/register"), setIsOpenSidebar(false);
+                }}
+              >
+                <div className={style.icons}>
+                  <LiaRegistered />
+                </div>{" "}
+                <span>Sign up</span>
+              </div>
             </li>
           </>
         )}
@@ -71,10 +90,12 @@ const SideBar = ({ isOpenSidebar, setIsOpenSidebar }) => {
 
       <ul className="">
         <li>
-          <div className={style.icons}>
-            <BiSolidHelpCircle />
+          <div className={style.liCont}>
+            <div className={style.icons}>
+              <BiSolidHelpCircle />
+            </div>
+            <span>Yardim</span>
           </div>
-          <span>Yardim</span>
         </li>
       </ul>
 

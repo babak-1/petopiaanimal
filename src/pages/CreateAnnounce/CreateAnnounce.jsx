@@ -6,15 +6,16 @@ import ClockLoader from "react-spinners/ClockLoader";
 import useBase64 from "../../hooks/useBase64";
 import axios from "axios";
 import { axiosPrivate } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const CreateAnnounce = () => {
+  const navigate = useNavigate();
   const fileInput = useRef(null);
   const { response: categories, loading } = useFetch(
     "/api/categories/getcategorieswithbreeds"
   );
 
   const { response: allCities } = useFetch("/api/cities");
-
   const [categoryId, setCategoryId] = useState("1");
 
   const { base64Array, handleFileSelect } = useBase64();
@@ -44,8 +45,10 @@ const CreateAnnounce = () => {
     };
 
     async function createAnnounce(data) {
+      console.log(data);
       try {
         await axiosPrivate.post("/api/announcements", data);
+        navigate("/");
       } catch (error) {
         console.log(error);
       }
