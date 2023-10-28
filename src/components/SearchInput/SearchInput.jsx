@@ -12,7 +12,7 @@ const SearchInput = () => {
   console.log("txt", text);
 
   //
-  const cities = useFetch("api/cities");
+  const cities = useFetch("/api/cities");
   console.log("seherler", cities);
   const navigate = useNavigate();
 
